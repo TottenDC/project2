@@ -70,6 +70,7 @@ searchButton.addEventListener('click', () => {
   let searchInput = document.querySelector('.student-search input').value.toLowerCase();
   let searchResults = [];
   for (i=0; i<arrayOfStudents.length; i++) {
+    arrayOfStudents[i].style.display = 'none';
     let name = arrayOfStudents[i].querySelector('h3').textContent;
     let email = arrayOfStudents[i].querySelector('.email').textContent;
     let searchQuery = new RegExp(searchInput);
@@ -77,5 +78,5 @@ searchButton.addEventListener('click', () => {
       searchResults.push(arrayOfStudents[i]);
     }
   }
-  console.log(searchResults);
+  displayStudents(searchResults, 1);
 })
