@@ -6,6 +6,7 @@ FSJS project 2 - List Filter and Pagination
 // Add variables that store DOM elements you will need to reference and/or manipulate
 const arrayOfStudents = document.querySelectorAll('.student-item');
 const pageDiv = document.querySelector('.page');
+const headerDiv = document.querySelector('.page-header');
 
 /*
 Show/Hide Student function
@@ -51,9 +52,30 @@ const addPageButtons = studentList => {
 //Call function to add page numbers
 addPageButtons(arrayOfStudents);
 
-//Create an event handle for the buttons - linked to Show/Hide function 
+//Create an event handler for the buttons - linked to Show/Hide function
 const paginationDiv = document.querySelector('.pagination');
 paginationDiv.addEventListener('click', (event) => {
   let pageNumber = event.target.textContent;
   displayStudents(arrayOfStudents, pageNumber);
 });
+
+//Create search bar and search button
+const searchBarDiv = document.createElement('div');
+searchBarDiv.className = 'student-search';
+searchBarDiv.innerHTML = '<input placeholder="Search for students..."> <button>Search</button>';
+headerDiv.appendChild(searchBarDiv);
+
+const searchButton = document.querySelector('.student-search button');
+searchButton.addEventListener('click', () => {
+  let searchInput = document.querySelector('.student-search input').value.toLowerCase();
+  let searchResults = [];
+  for (i=0; i<arrayOfStudents.length; i++) {
+    let name = arrayOfStudents[i].querySelector('h3').textContent;
+    let email = arrayOfStudents[i].querySelector('.email').textContent;
+    let searchQuery = new RegExp(searchInput);
+    if (searchQuery.test(name) || searchQuery.test(email)) {
+      searchResults.push(arrayOfStudents[i]);
+    }
+  }
+  console.log(searchResults);
+})
