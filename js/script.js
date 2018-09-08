@@ -27,7 +27,7 @@ const displayStudents = (studentList, page) => {
   }
 }
 
-
+displayStudents(arrayOfStudents, 1);
 
 // Create and append the pagination links - Creating a function that can do this is a good approach
 const addPageButtons = studentList => {
@@ -43,6 +43,11 @@ const addPageButtons = studentList => {
   pageDiv.appendChild(buttonDiv);
 }
 
-
+addPageButtons(arrayOfStudents);
 // Add functionality to the pagination buttons so that they show and hide the correct items
 // Tip: If you created a function above to show/hide list items, it could be helpful here
+const paginationDiv = document.querySelector('.pagination');
+paginationDiv.addEventListener('click', (event) => {
+  let pageNumber = event.target.textContent;
+  displayStudents(arrayOfStudents, pageNumber);
+});
