@@ -26,10 +26,16 @@ const displayStudents = (studentList, page) => {
     }
   }
 }
-
+//Call function so that page loads with first 10
 displayStudents(arrayOfStudents, 1);
 
-// Create and append the pagination links - Creating a function that can do this is a good approach
+/*
+Function to add page numbers
+1. Create new div and ul HTML elements and append to each other
+2. Create dynamic li based on list of students with for loop
+  - Add the anchor tag to each li and append to ul
+3. Append entire new div to main div
+*/
 const addPageButtons = studentList => {
   const buttonDiv = document.createElement('div');
   buttonDiv.className = 'pagination';
@@ -42,10 +48,10 @@ const addPageButtons = studentList => {
   }
   pageDiv.appendChild(buttonDiv);
 }
-
+//Call function to add page numbers
 addPageButtons(arrayOfStudents);
-// Add functionality to the pagination buttons so that they show and hide the correct items
-// Tip: If you created a function above to show/hide list items, it could be helpful here
+
+//Create an event handle for the buttons - linked to Show/Hide function 
 const paginationDiv = document.querySelector('.pagination');
 paginationDiv.addEventListener('click', (event) => {
   let pageNumber = event.target.textContent;
