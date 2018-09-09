@@ -90,6 +90,10 @@ Search 'meat-and-potatoes'
     arrayOfStudents[i].style.display = 'none';
     let name = arrayOfStudents[i].querySelector('h3').textContent;
     let email = arrayOfStudents[i].querySelector('.email').textContent;
+/*
+Found RegExp and comparing strings to strings from:
+http://adripofjavascript.com/blog/drips/determining-if-a-string-contains-another-string-in-javascript-three-approaches.html
+*/
     let searchQuery = new RegExp(searchInput);
     if (searchQuery.test(name) || searchQuery.test(email)) {
       searchResults.push(arrayOfStudents[i]);
