@@ -105,8 +105,13 @@ Search 'meat-and-potatoes'
 //Remove old buttons
   const buttonDiv = document.querySelector('.pagination');
   buttonDiv.parentNode.removeChild(buttonDiv);
-//Add buttons related to search results
+//Add buttons related to search results and link functionality
   addPageButtons(searchResults);
+  const paginationDiv = document.querySelector('.pagination');
+  paginationDiv.addEventListener('click', (event) => {
+    let pageNumber = event.target.textContent;
+    displayStudents(searchResults, pageNumber);
+  });
 //Display the results
   displayStudents(searchResults, 1);
 };
