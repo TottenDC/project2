@@ -78,10 +78,10 @@ const searchFunction = () => {
   }
 /*
 Search 'meat-and-potatoes'
-1. Grab input and store in variables
+1. Grab input and store in variable
 2. Loop through all students.
   -Turn off display
-  -Grab student name and email
+  -Grab student name and email and store in variables
   -Create a regular expression from input so can use .test method
   -Add matches to new array
 */
